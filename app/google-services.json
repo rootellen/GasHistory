@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "536590186004",
+    "project_id": "gashistory-3448c",
+    "storage_bucket": "gashistory-3448c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:536590186004:android:91d63b0cc60c6baf12d901",
+        "android_client_info": {
+          "package_name": "br.edu.ifsp.gashistory"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "536590186004-tn84ho5aolphh4h4cbaqdro92oq543rg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARiOagbYLIIqQlnf-KKUQvlk5HIvBLejw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "536590186004-tn84ho5aolphh4h4cbaqdro92oq543rg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
