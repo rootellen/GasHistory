@@ -31,10 +31,10 @@ class GasActivity : AppCompatActivity() {
         datePicker.setMaxDate(today.timeInMillis);
 
         activityGasBinding.salvarBt.setOnClickListener { view: View? ->
-            val text = "${datePicker.dayOfMonth} / ${datePicker.month} / ${datePicker.year}"
+            val text = "${datePicker.dayOfMonth}-${datePicker.month}-${datePicker.year}"
             val gas = Gas(
                 text,
-                activityGasBinding.valorEt.text.toString().toFloat()
+                activityGasBinding.valorEt.text.toString().toDouble()
             )
             val resultadoIntent = Intent()
             resultadoIntent.putExtra(MainActivity.EXTRA_GAS, gas)

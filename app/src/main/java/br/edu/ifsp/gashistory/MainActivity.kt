@@ -3,11 +3,14 @@ package br.edu.ifsp.gashistory
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.edu.ifsp.gashistory.adapter.GasRvAdapter
+import br.edu.ifsp.gashistory.controller.GasController
 import br.edu.ifsp.gashistory.databinding.ActivityMainBinding
 import br.edu.ifsp.gashistory.model.Gas
 
@@ -23,7 +26,13 @@ class MainActivity : AppCompatActivity(), OnGasClickListener {
 
     private lateinit var gasActivityResultLauncher: ActivityResultLauncher<Intent>
 
-    private var gasList: MutableList<Gas> = ArrayList()
+    private val gasList: MutableList<Gas> by lazy {
+        gasController.buscarGas()
+    }
+
+    private val gasController: GasController by lazy {
+        GasController(this)
+    }
 
     private val gasAdapter: GasRvAdapter by lazy {
        GasRvAdapter(this, gasList)
@@ -53,6 +62,7 @@ class MainActivity : AppCompatActivity(), OnGasClickListener {
                         }
                     }
                     if (flag != 1) {
+                        gasController.criarGas(this)
                         gasList.add(this)
                         gasAdapter.notifyDataSetChanged()
                     }
@@ -64,6 +74,19 @@ class MainActivity : AppCompatActivity(), OnGasClickListener {
             gasActivityResultLauncher.launch(Intent(this, GasActivity::class.java))
         }
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
+        R.id.atualizarMi -> {
+            gasAdapter.notifyDataSetChanged()
+            true
+        }
+        else -> { false }
     }
 
 }
